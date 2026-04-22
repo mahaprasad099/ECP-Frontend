@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 35% 98%;
+    --foreground: 220 30% 12%;
+
+    --card: 215 30% 97%;
+    --card-foreground: 220 30% 12%;
+
+    --popover: 215 30% 97%;
+    --popover-foreground: 220 30% 12%;
+
+    --primary: 215 85% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 65% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 25% 94%;
+    --muted-foreground: 220 12% 45%;
+
+    --accent: 180 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 88%;
+    --input: 215 25% 88%;
+    --ring: 215 85% 50%;
+
+    --radius: 0.75rem;
+
+    /* Legacy token names remapped to the new blue / violet / turquoise palette.
+       (Names kept so existing components don't break.) */
+    --amber: 215 85% 50%;            /* was amber → now blue */
+    --amber-foreground: 0 0% 100%;
+    --coral: 270 65% 60%;            /* was coral → now violet */
+    --coral-foreground: 0 0% 100%;
+    --teal: 180 70% 45%;             /* turquoise */
+    --teal-foreground: 0 0% 100%;
+    --ocean: 220 80% 40%;            /* deep ocean blue */
+    --ocean-foreground: 0 0% 100%;
+    --sand: 215 30% 95%;
+    --purple: 270 65% 60%;
+    --purple-foreground: 0 0% 100%;
+
+    --sidebar-background: 220 25% 12%;
+    --sidebar-foreground: 40 20% 93%;
+    --sidebar-primary: 205 78% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 40 20% 93%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 205 78% 55%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 40 20% 93%;
+    --card: 220 25% 12%;
+    --card-foreground: 40 20% 93%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 40 20% 93%;
+    --primary: 205 78% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 16 80% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 40 10% 60%;
+    --accent: 174 60% 42%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 205 78% 55%;
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 40 20% 93%;
+    --sidebar-primary: 205 78% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 14%;
+    --sidebar-accent-foreground: 40 20% 93%;
+    --sidebar-border: 220 15% 16%;
+    --sidebar-ring: 205 78% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ========================
+   KEYFRAME ANIMATIONS
+   ======================== */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(205 78% 45% / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(205 78% 45% / 0.6), 0 0 60px hsl(174 60% 42% / 0.3); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes text-reveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes draw-path {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes car-drive {
+  0% { transform: translateX(-100px); }
+  100% { transform: translateX(calc(100% + 100px)); }
+}
+
+@keyframes wheel-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gear-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gear-rotate-reverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes shield-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes checkmark-draw {
+  0% { stroke-dashoffset: 50; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes particle-float {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translate(var(--tx, 50px), var(--ty, -100px)) scale(0); opacity: 0; }
+}
+
+@keyframes counter-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: hsl(205 78% 45% / 0.3); }
+  50% { border-color: hsl(16 80% 60% / 0.6); }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(60px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-left {
+  0% { transform: translateX(60px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes road-dash {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -40; }
+}
+
+@keyframes bar-grow {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-5px); }
+  75% { transform: translateY(5px); }
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Utility animation classes */
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 5s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-shimmer { animation: shimmer 3s linear infinite; }
+.animate-gradient-shift { animation: gradient-shift 6s ease infinite; background-size: 200% 200%; }
+.animate-text-reveal { animation: text-reveal 1.2s ease-out forwards; }
+.animate-draw-path { animation: draw-path 2s ease-out forwards; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+.animate-car-drive { animation: car-drive 8s linear infinite; }
+.animate-wheel-spin { animation: wheel-spin 1s linear infinite; }
+.animate-gear-rotate { animation: gear-rotate 4s linear infinite; }
+.animate-gear-rotate-reverse { animation: gear-rotate-reverse 4s linear infinite; }
+.animate-shield-pulse { animation: shield-pulse 2s ease-in-out infinite; }
+.animate-checkmark-draw { animation: checkmark-draw 0.8s ease-out forwards; stroke-dasharray: 50; stroke-dashoffset: 50; }
+.animate-border-glow { animation: border-glow 3s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.8s ease-out forwards; }
+.animate-slide-left { animation: slide-left 0.8s ease-out forwards; }
+.animate-road-dash { animation: road-dash 1s linear infinite; }
+.animate-bar-grow { animation: bar-grow 1s ease-out forwards; transform-origin: bottom; }
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+.animate-bounce-subtle { animation: bounce-subtle 2s ease-in-out infinite; }
+
+@keyframes wing-flap {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-15deg); }
+}
+@keyframes wing-flap-r {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+.animate-wing-flap { animation: wing-flap 1.5s ease-in-out infinite; }
+.animate-wing-flap-r { animation: wing-flap-r 1.5s ease-in-out infinite; }
+
+/* Staggered animation delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-1000 { animation-delay: 1s; }
+.delay-1200 { animation-delay: 1.2s; }
+.delay-1500 { animation-delay: 1.5s; }
+.delay-2000 { animation-delay: 2s; }
+
+/* Horizontal scroll snap */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-snap-panel {
+  scroll-snap-align: start;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Seamless one-page background spanning all panels */
+.seamless-bg {
+  background:
+    linear-gradient(
+      to right,
+      hsl(40 33% 98%),
+      hsl(40 33% 96%),
+      hsl(205 78% 45% / 0.04),
+      hsl(174 60% 42% / 0.05),
+      hsl(38 92% 55% / 0.04),
+      hsl(16 80% 60% / 0.04),
+      hsl(270 60% 55% / 0.04),
+      hsl(38 92% 55% / 0.04),
+      hsl(205 78% 45% / 0.06),
+      hsl(174 60% 42% / 0.04),
+      hsl(40 33% 98%)
+    );
+  background-size: 700vw 100%;
+  background-attachment: local;
+}
